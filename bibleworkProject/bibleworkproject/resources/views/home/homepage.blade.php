@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="module" src="./kjv.js"></script>
+
 </head>
 <body>
 <h1>Bible Search</h1>
 
 <h2>By Keyword</h2>
-<form method="post" action="search.php">
-     Text: <input type="text" id="term" name="term" />    
-     Version: <select name="version" id="version">
-       <option value="kjv">King James (KJV)</option>
-       <option value="web">World English Bible (WEB)</option>
-       <option value="ylt">Young's Literal Translation (YLT)</option>
-       <option value="asv">American Standard Version (ASV)</option>
-       <option value="bbe">Bible in Basic English(BBE)</option>
+<form method="POST" action="{{ route('search') }}">
+  @csrf
+  
+      <label for="term">Text:</label>
+      <input type="text" id="term" name="term">
+  
+  
+      <label for="version">Version:</label>
+      <select name="version" id="version">
+          <option value="kjv">King James (KJV)</option>
+          <option value="web">World English Bible (WEB)</option>
+          <option value="ylt">Young's Literal Translation (YLT)</option>
+          <option value="asv">American Standard Version (ASV)</option>
+          <option value="bbe">Bible in Basic English(BBE)</option>
       </select>
-
-     <input onclick="searchFn()" type="submit" value="Search">
+  
+  <input onclick="searchFn()" type="submit" value="Search">
 </form> 
 
 
@@ -93,7 +99,12 @@
 
 <p id="display"></p>
 
-
+<script src="{{ asset('js/search.js') }}"></script>
+<script>
+    // Assuming data is a JSON object
+    var result = getNames(data, "name");
+   document.write("result: " + result.join(", "));
+</script>
 <script>
  var search = document.getElementById("term").value;
 //console.log(data);
@@ -120,5 +131,6 @@ function getNames(obj, name) {
     }
 }
 </script>
+<script type="module" src= "{{ asset('js/kjv.js') }}"></script>
 </body>
 </html>

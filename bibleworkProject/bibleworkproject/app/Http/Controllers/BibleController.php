@@ -27,7 +27,7 @@ class BibleController extends Controller
         ];
         
         $version = $versions[$bibleVersion] ?? 't_kjv';
-
+        
         // Perform database query
         $results = DB::table($version)
             ->join('book_info', 'book_info.order', '=', $version . '.b')

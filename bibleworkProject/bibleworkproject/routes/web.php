@@ -10,4 +10,4 @@ use App\Http\Controllers\BibleController;
 
 Route::get('/', [HomeController::class,'homepage']);
 
-Route::post('/search', [BibleController::class, 'search']);
+Route::post('/search', [BibleController::class, 'search'])->name('search');

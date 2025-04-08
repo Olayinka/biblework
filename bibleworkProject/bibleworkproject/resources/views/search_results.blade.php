@@ -1,7 +1,6 @@
 <h1>Bible Search</h1>
 
 <h2>Keyword: {{ $searchText }}</h2>
-
 <hr />
 
 @if ($results->count() > 0)
